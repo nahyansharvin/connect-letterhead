@@ -10,17 +10,21 @@ Font.register({ family: 'Montserrat', src: fontRegular });
 Font.register({ family: 'Montserrat-Bold', src: fontBold });
 
 type LetterHeadProps = {
-    recipient: string,
-    designation: string,
-    department: string,
-    toAddress: string,
-    date: string,
-    day: string,
-    subject: string,
-    body: string
+    data: {
+        recipient: string,
+        designation: string,
+        department: string,
+        toAddress: string,
+        date: string,
+        day: string,
+        subject: string,
+        body: string
+    }
 }
 
-const LetterHead = ({ recipient, designation, department, toAddress, date, day, subject, body }: LetterHeadProps) => {
+const LetterHead = ({ data }: LetterHeadProps) => {
+
+    const { recipient, designation, department, toAddress, date, day, subject, body } = data;
 
     return (
         <Document>
