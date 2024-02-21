@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
-import Header from "../../assets/Images/letter_header.png"
-import Watermark from "../../assets/Images/letter_watermark.png"
+import Header from "../../assets/Images/Connect_header.png"
+import Watermark from "../../assets/Images/Connect_watermark.png"
 import fontRegular from "../../assets/Fonts/Montserrat-Regular.ttf"
 import fontBold from "../../assets/Fonts/Montserrat-Medium.ttf"
 
