@@ -1,0 +1,32 @@
+.logo-btn {
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 5px;
+}
+
+.logo-btn:hover {
+    transform: scale(1.002);
+    box-shadow: 0 5px 20px -5px #4d4d4d;
+}
+
+.logo-btn .logo {
+    background-color: #fff;
+    border-radius: 3px;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+}
+
+.btn-txt {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    width: 100%;
+}
+
