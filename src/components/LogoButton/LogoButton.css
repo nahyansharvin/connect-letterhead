@@ -1,5 +1,5 @@
 .logo-btn {
-    width: 500px;
+    width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,8 +17,8 @@
 .logo-btn .logo {
     background-color: #fff;
     border-radius: 3px;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     padding: 5px;
 }
 
@@ -30,3 +30,13 @@
     width: 100%;
 }
 
+@media screen and (min-width: 480px){
+    .logo-btn {
+        width: 500px;
+    }
+    .logo-btn .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+}

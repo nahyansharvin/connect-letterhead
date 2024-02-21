@@ -11,6 +11,7 @@ const Home = ({ setClub }: HomeProps) => {
 
   return (
     <div className='home'>
+      <h2>Create your Letter Head</h2>
       {Object.entries(Clubs).map(([key, value]) =>
         <LogoButton key={key} logo={value.logo} label={value.name} color={value.color} onClick={() => setClub(key)} />
       )}
