@@ -12,7 +12,7 @@ import { Recipients, Departments } from '../../data'
 import { Button } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { getDate, getDay } from '../../utils/formatDate'
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import LetterHead from '../../components/LetterHead/LetterHead'
 
 type AddLetterBodyProps = {
