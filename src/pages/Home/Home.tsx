@@ -1,15 +1,19 @@
 import './Home.css'
 import LogoButton from '../../components/LogoButton/LogoButton'
+import { Clubs } from '../../data/Clubs'
+import { Dispatch, SetStateAction } from 'react'
 
-import Logo from '../../assets/Images/connect.svg'
-import IedcLogo from '../../assets/Images/IEDC/IEDClogo_transparent.png'
+type HomeProps = {
+  setClub: Dispatch<SetStateAction<string>>
+}
 
+const Home = ({ setClub }: HomeProps) => {
 
-const Home = () => {
   return (
     <div className='home'>
-        <LogoButton logo={Logo} label="Connect" />
-        <LogoButton logo={IedcLogo} label="IEDC EMEA" color='#24956a' />
+      {Object.entries(Clubs).map(([key, value]) =>
+        <LogoButton key={key} logo={value.logo} label={value.name} color={value.color} onClick={() => setClub(key)} />
+      )}
     </div>
   )
 }

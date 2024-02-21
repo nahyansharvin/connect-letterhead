@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import './AddLetterBody.css'
 
 //Custom Components
@@ -12,12 +12,15 @@ import { Recipients, Departments } from '../../data'
 import { Button } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { getDate, getDay } from '../../utils/formatDate'
-import { PDFDownloadLink } from '@react-pdf/renderer'
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
 import LetterHead from '../../components/LetterHead/LetterHead'
 
+type AddLetterBodyProps = {
+    club: string
+    setClub: Dispatch<SetStateAction<string>>
+}
 
-
-function AddLetterBody() {
+function AddLetterBody({ club, setClub }: AddLetterBodyProps) {
     //States
     const [recipient, setRecipient] = useState<string>("Principal")
     const [department, setDepartment] = useState<string>("Dept. of Computer Science")
@@ -65,7 +68,10 @@ function AddLetterBody() {
 
     return (
         <div className='body-container'>
-            <h3>Letter Head</h3>
+            <div className='back-btn' onClick={() => setClub("none")}>
+                <span>{`<`} Back</span> 
+            </div>
+            <h3>{club} Letter Head</h3>
             <div className='body-form'>
                 <SelectInput
                     label="Recipient of letter"
@@ -100,7 +106,7 @@ function AddLetterBody() {
                     disablePast
                 />
                 <TextInput multiline label="Subject" value={subject} setValue={setSubject} />
-                <TextInput multiline rows="10" label="Letter Body" value={body} setValue={setBody} />
+                <TextInput multiline rows="9" label="Letter Body" value={body} setValue={setBody} />
                 <Button
                     fullWidth
                     onClick={handlePrintButton}
@@ -110,13 +116,15 @@ function AddLetterBody() {
                 </Button>
             </div>
             {open &&
-            <div className="pdf-download">
-                <PDFDownloadLink document={<LetterHead data={letterBody} />} fileName="connect-letter.pdf">
-                    {({ loading }) =>
-                        loading ? (<Button fullWidth disabled>Loading...</Button>) : (<Button variant='contained' fullWidth className="mt-2 bg-green-500">Download</Button>)
-                    }
-                </PDFDownloadLink>
-            </div>
+                <div className="pdf-download">
+                    <PDFDownloadLink
+                        document={<LetterHead club={club} data={letterBody} />}
+                        fileName={`${club}-letter.pdf`}>
+                        {({ loading }) =>
+                            loading ? (<Button fullWidth disabled>Loading...</Button>) : (<Button variant='contained' fullWidth>Download</Button>)
+                        }
+                    </PDFDownloadLink>
+                </div>
             }
         </div>
     )
