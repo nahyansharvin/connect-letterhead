@@ -80,6 +80,12 @@ const LetterHead = ({ club, data }: LetterHeadProps) => {
             justifyContent: 'center',
             alignItems: 'center',
         },
+        footerImage: {
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+        },
         watermark: {
             top: Clubs[club].watermarkPosition,
             zIndex: -1,
@@ -122,10 +128,14 @@ const LetterHead = ({ club, data }: LetterHeadProps) => {
                 </View>
 
                 {/* Footer */}
-                <View fixed style={styles.footer}>
-                    <View style={styles.lineAboveFooter} />
-                    <Text>{Clubs[club].website}</Text>
-                </View>
+                {Clubs[club].haveCustomFooter ?
+                    <Image fixed src={Clubs[club].footer} style={styles.footerImage} />
+                    :
+                    <View fixed style={styles.footer}>
+                        <View style={styles.lineAboveFooter} />
+                        <Text>{Clubs[club].website}</Text>
+                    </View>
+                }
             </Page>
         </Document>
     )

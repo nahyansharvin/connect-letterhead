@@ -4,6 +4,7 @@ import ConnectWatermark from '../assets/Images/Connect_watermark.png';
 import IEDCLogo from '../assets/Images/IEDC/IEDClogo_transparent.png';
 import IEDCHeader from '../assets/Images/IEDC/IEDC_Header.png';
 import IEDCWatermark from '../assets/Images/IEDC/IEDC_Watermark.png';
+import IEDCFooter from '../assets/Images/IEDC/IEDC_Footer.png';
 
 type ClubsType = {
     [key: string]: {
@@ -13,6 +14,8 @@ type ClubsType = {
         header: string,
         watermark: string,
         watermarkPosition: number,
+        haveCustomFooter: boolean,
+        footer?: string, //required if haveCustomFooter is true
         color: string,
     }
 }
@@ -25,6 +28,7 @@ export const Clubs: ClubsType = {
         header: ConnectHeader,
         watermark: ConnectWatermark,
         watermarkPosition: 230,
+        haveCustomFooter: false,
         color: "#2c2870",
     },
     IEDC: {
@@ -33,7 +37,9 @@ export const Clubs: ClubsType = {
         logo: IEDCLogo,
         header: IEDCHeader,
         watermark: IEDCWatermark,
-        watermarkPosition: 150,
+        watermarkPosition: 160,
+        haveCustomFooter: true,
+        footer: IEDCFooter,
         color: "#24956a",
     },
 };
