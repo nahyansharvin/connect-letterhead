@@ -19,7 +19,7 @@ function TextInput({
   value,
   setValue,
 }: TextInputProps) {
-  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
+  const [parent] = useAutoAnimate(/* optional config */);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
 

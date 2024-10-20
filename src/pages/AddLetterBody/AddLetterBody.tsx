@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState, useRef } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import "./AddLetterBody.css";
 
@@ -27,7 +27,7 @@ type AddLetterBodyProps = {
 function AddLetterBody({ club, setClub }: AddLetterBodyProps) {
   //States
   const [prompt, setPrompt] = useState<string>("");
-  const [response, setResponse] = useState<string>("");
+  //   const [response, setResponse] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -50,7 +50,7 @@ function AddLetterBody({ club, setClub }: AddLetterBodyProps) {
     subject: "",
     body: "",
   });
-  const [parent, enableAnimations] = useAutoAnimate(/* optional config */);
+  const [parent] = useAutoAnimate(/* optional config */);
 
   const sendPromptToGeminiAPI = async () => {
     if (!prompt) {
@@ -80,13 +80,12 @@ function AddLetterBody({ club, setClub }: AddLetterBodyProps) {
       // Send prompt and get the response
       const result = await model.generateContent(ThePromt);
 
-      setResponse(result.response.text());
+      //   setResponse(result.response.text());
       setBody(result.response.text());
-
-      
     } catch (error) {
       console.error("Error calling the Google Gemini API:", error);
-      setResponse("Error occurred while calling the API.");
+      setError("Error occurred while calling the API.");
+      //   setResponse("Error occurred while calling the API.");
     } finally {
       setLoading(false);
     }
